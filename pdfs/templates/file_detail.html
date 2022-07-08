@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Book Detail view
+{% endblock title %}
+    
+
+{% block content %}
+    <h1>{{ object.title }}</h1>
+    <h2>{{ object.author.username }}</h2>
+    <p>{{ object.created }}</p>
+    <form method="get">
+        <input type="text" name="key" value="{{ request.GET.key }}" placeholder="Search for key word" style="width: 1000px;height: 50px;">
+    </form>
+    {% if request.GET.key %}
+        <h2>{{ data|length }}</h2>
+    <ol>
+        {% for s in data %}
+        <li>{{ s }}</li>        
+        {% endfor %}
+    </ol>
+    {% endif %}
+{% endblock content %}
+    

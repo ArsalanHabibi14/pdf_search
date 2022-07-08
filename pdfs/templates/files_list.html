@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Book List
+{% endblock title %}
+
+
+{% block content %}
+    <h1>These are our books!</h1>
+    
+    {% for books in object_list %}
+        <a href="{% url 'book_detail' books.id %}"><h1>{{ books.title }}</h1></a>
+        
+        {% if books.description %}
+            {{ books.description }}
+        {% endif %}
+        <h2>{{ books.author.username }}</h2>
+        <p>{{ books.created }}</p>
+        <hr>
+    {% endfor %}
+        
+{% endblock content %}
