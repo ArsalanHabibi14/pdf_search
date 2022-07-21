@@ -25,7 +25,7 @@ class BookDetailView(DetailView):
         get_book = Books.objects.get(id=self.kwargs.get('pk'))
         key = self.request.GET.get('key')
         file_name = os.path.basename(get_book.file.url)
-        my_file = open(f"H:\ARSLAN\PracticeProjects\pdf_search\staticfiles\media_root\{file_name}", "rb")
+        my_file = open(f"{get_book.file.path}", "rb")
         reader = PyPDF2.PdfFileReader(my_file)
         full_pages = reader.numPages
         if key:
